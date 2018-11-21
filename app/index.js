@@ -11,9 +11,17 @@ class App extends React.Component {
            albums: []
         }
       }
+      
+      function groupBy(xs, key) {
+        return xs.reduce(function(rv, x) {
+          (rv[x[key]] = rv[x[key]] || []).push(x);
+          return rv;
+        }, {});
+      };
 
       function groupAlbums(albums) {
         //group albums by id
+        return groupBy(album, album.albumId);
       }
       
     componentDidMount() {
@@ -31,7 +39,8 @@ class App extends React.Component {
         //     })
             axios.get("http://localhost:3000")
                 .then(function (response) {
-                    this.setState({ albums: response.body });
+                    const albums = groupAlbums(response.body);
+                    this.setState({ albums: albums });
                 })
                 .catch(function (error) {
                     console.log(error);
