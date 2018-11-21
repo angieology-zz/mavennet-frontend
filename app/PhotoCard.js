@@ -5,7 +5,7 @@ class PhotoCard extends React.Component {constructor() {
     super()
     this.state = {
       //album id
-      //photo
+      //photo id
       //title
     }
   }

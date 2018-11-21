@@ -13,7 +13,7 @@ class App extends React.Component {
       }
 
       function groupAlbums(albums) {
-        
+        //group albums by id
       }
       
     componentDidMount() {
